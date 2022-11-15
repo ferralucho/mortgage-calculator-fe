@@ -154,3 +154,13 @@ button {
   padding: 1em;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+  padding-top: 50px;
+  padding-left: 60px;
+}
