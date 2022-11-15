@@ -12,6 +12,13 @@ function App() {
     alert(JSON.stringify(data));
   };
 
+  const numericAttributes = {
+    type:"number", 
+    step:"5", 
+    min:"5",
+    max:"30"
+  }
+
   return (
     <div className="App">
       <header>
@@ -51,7 +58,7 @@ function App() {
               <p>Numbers only</p>
             )}
             <label>Amortization Period</label>
-            <input type="number" step="5" min="5" max="30" {...register("amortization", { required: true,
+            <input {...numericAttributes} {...register("amortization", { required: true,
               maxLength: 20, min: 5, max: 30 })} />
             {errors?.amortizationPeriod?.type === "required" && <p>This field is required</p>}
             {errors?.amortizationPeriod?.type === "maxLength" && (
