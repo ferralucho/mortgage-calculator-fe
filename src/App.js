@@ -5,15 +5,12 @@ function App() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors }
   } = useForm();
 
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
   };
-
-  console.log(watch("example")); 
 
   return (
     <div className="App">
@@ -29,7 +26,7 @@ function App() {
       <body>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>Property Price</label>
-          <input
+          <input 
             {...register("propertyPrice", {
               required: true,
               maxLength: 20,
@@ -54,7 +51,7 @@ function App() {
               <p>Numbers only</p>
             )}
             <label>Amortization Period</label>
-            <input {...register("amortization", { required: true,
+            <input type="number" step="5" min="5" max="30" {...register("amortization", { required: true,
               maxLength: 20, min: 5, max: 30 })} />
             {errors?.amortizationPeriod?.type === "required" && <p>This field is required</p>}
             {errors?.amortizationPeriod?.type === "maxLength" && (
