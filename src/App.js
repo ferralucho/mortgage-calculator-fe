@@ -18,16 +18,19 @@ function App() {
   };
 
   const fetchMortgageCalculation = (input) => {
-    const {propertyPrice, downPayment, amortization, annualInterestRate } = input;
+    const { propertyPrice, downPayment, amortization, annualInterestRate } = input;
     const params = new URLSearchParams([["property_price", propertyPrice], ["down_payment", downPayment], ["amortization_period", amortization], ["annual_interest_rate", annualInterestRate], ["payment_schedule", "monthly"]])
 
     axios
       .get('http://localhost:8082/mortgage/formula', { params })
       .then((res) => {
         setMortgageCalculation(res.data);
+        setErrorMessage("");
       })
       .catch((err) => {
-        setErrorMessage(err.message);
+        const errorToShow = err.response.data?.message ?? ""
+        setErrorMessage(errorToShow);
+        setMortgageCalculation({});
       });
   };
 
@@ -107,7 +110,7 @@ function App() {
               )}
 
               <input type="submit" />
-              <span>{errorMessage}</span>
+              <p>{errorMessage}</p>
             </form>
           </div>
           <div className='column-right'>
