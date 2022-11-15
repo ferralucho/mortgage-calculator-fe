@@ -14,12 +14,15 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = (data) => {
-    fetchMortgageCalculation();
+    fetchMortgageCalculation(data);
   };
 
-  const fetchMortgageCalculation = () => {
+  const fetchMortgageCalculation = (input) => {
+    const {propertyPrice, downPayment, amortization, annualInterestRate } = input;
+    const params = new URLSearchParams([["property_price", propertyPrice], ["down_payment", downPayment], ["amortization_period", amortization], ["annual_interest_rate", annualInterestRate], ["payment_schedule", "monthly"]])
+
     axios
-      .get('http://localhost:8082/mortgage/formula')
+      .get('http://localhost:8082/mortgage/formula', { params })
       .then((res) => {
         setMortgageCalculation(res.data);
       })
@@ -91,15 +94,15 @@ function App() {
               )}
 
               <label>Mortgage Rate</label>
-              <input {...register("mortgageRate", {
+              <input {...register("annualInterestRate", {
                 required: true,
                 maxLength: 20, pattern: /[0-9]+/i
               })} />
-              {errors?.mortgageRate?.type === "required" && <p>This field is required</p>}
-              {errors?.mortgageRate?.type === "maxLength" && (
+              {errors?.annualInterestRate?.type === "required" && <p>This field is required</p>}
+              {errors?.annualInterestRate?.type === "maxLength" && (
                 <p>Down Payment cannot exceed 20 characters</p>
               )}
-              {errors?.mortgageRate?.type === "pattern" && (
+              {errors?.annualInterestRate?.type === "pattern" && (
                 <p>Numbers only</p>
               )}
 
