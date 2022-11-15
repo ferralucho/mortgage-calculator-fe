@@ -1,5 +1,8 @@
 # Mortgage calculator for Canada frontend
 
+![image](https://user-images.githubusercontent.com/705604/201824460-69c314d3-3f89-419d-aa92-7bb703310d53.png)
+
+
 ## Available Scripts
 
 In the project directory, you can run:
