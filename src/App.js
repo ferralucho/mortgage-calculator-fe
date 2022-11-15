@@ -117,11 +117,12 @@ function App() {
             Mortgage Calculation Result
             <div className='item-container'>
               <div className='card'>
-                <h5>Ratio between mortgage and down payment:</h5> {mortgageCalculation.difference_ratio}
                 <h5> Mortgage amount before adding CHMC Insurance, it applies for high ratio loans: </h5> {mortgageCalculation.mortgage_before_chmc}
                 <h5>Chmc Insurance Total Amount: </h5>{mortgageCalculation.chmc_insurance_total}
                 <h5>Payment per payment amount: </h5> {mortgageCalculation.mortgage_payment_schedule}
                 <h5>Mortgage Total: </h5> {mortgageCalculation.mortgage_total}
+                <h5>Ratio between mortgage and down payment:</h5> {mortgageCalculation.difference_ratio}
+
               </div>
             </div>
           </div>
